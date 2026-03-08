@@ -18,8 +18,13 @@ Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('dashboard');
     }
-    return redirect()->route('login');
+    return redirect()->route('welcome');
 });
+
+// Welcome page
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
