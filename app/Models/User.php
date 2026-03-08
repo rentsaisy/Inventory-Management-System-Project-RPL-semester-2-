@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'status',
+        'last_login',
     ];
 
     /**
@@ -43,6 +46,31 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_login' => 'datetime',
         ];
+    }
+
+    /**
+     * Check if user is admin.
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user is employee.
+     */
+    public function isEmployee(): bool
+    {
+        return $this->role === 'employee';
+    }
+
+    /**
+     * Stock movements relationship.
+     */
+    public function stockMovements()
+    {
+        return $this->hasMany(StockMovement::class);
     }
 }
