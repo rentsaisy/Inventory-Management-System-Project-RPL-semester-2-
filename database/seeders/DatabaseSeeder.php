@@ -5,9 +5,13 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Supplier;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\StockMovement;
+use App\Models\IncomingTransaction;
+use App\Models\OutgoingTransaction;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -199,6 +203,54 @@ class DatabaseSeeder extends Seeder
             Product::create($product);
         }
 
+        // Create sample customers
+        $customers = [
+            [
+                'name' => 'Sarah Williams',
+                'email' => 'sarah.williams@email.com',
+                'phone' => '555-1001',
+                'address' => '100 Pine St',
+                'city' => 'Springfield',
+                'state' => 'IL',
+                'postal_code' => '62701',
+                'status' => 'active',
+            ],
+            [
+                'name' => 'Michael Chen',
+                'email' => 'mchen@email.com',
+                'phone' => '555-1002',
+                'address' => '200 Elm St',
+                'city' => 'Springfield',
+                'state' => 'IL',
+                'postal_code' => '62702',
+                'status' => 'active',
+            ],
+            [
+                'name' => 'Jennifer Martinez',
+                'email' => 'jmartinez@email.com',
+                'phone' => '555-1003',
+                'address' => '300 Maple Ave',
+                'city' => 'Chicago',
+                'state' => 'IL',
+                'postal_code' => '60601',
+                'status' => 'active',
+            ],
+            [
+                'name' => 'David Thompson',
+                'email' => 'dthompson@email.com',
+                'phone' => '555-1004',
+                'address' => '400 Cedar Ln',
+                'city' => 'Chicago',
+                'state' => 'IL',
+                'postal_code' => '60602',
+                'status' => 'active',
+            ],
+        ];
+
+        foreach ($customers as $customer) {
+            Customer::create($customer);
+        }
+
         // Create sample stock movements
         $products = Product::all();
 
@@ -233,6 +285,61 @@ class DatabaseSeeder extends Seeder
             'reason' => 'sale',
             'notes' => 'Online order',
             'reference_number' => 'ORD-001',
+        ]);
+
+        // Create sample incoming transactions
+        $suppliers = Supplier::all();
+        $products = Product::all();
+
+        IncomingTransaction::create([
+            'product_id' => $products->first()->id,
+            'supplier_id' => $suppliers->first()->id,
+            'user_id' => $admin->id,
+            'quantity' => 10,
+            'unit_price' => 5.00,
+            'total_price' => 50.00,
+            'purchase_order_number' => 'PO-2024-001',
+            'status' => 'received',
+            'transaction_date' => Carbon::now()->subDays(5),
+        ]);
+
+        IncomingTransaction::create([
+            'product_id' => $products[1]->id,
+            'supplier_id' => $suppliers[1]->id,
+            'user_id' => $admin->id,
+            'quantity' => 8,
+            'unit_price' => 15.00,
+            'total_price' => 120.00,
+            'purchase_order_number' => 'PO-2024-002',
+            'status' => 'received',
+            'transaction_date' => Carbon::now()->subDays(3),
+        ]);
+
+        // Create sample outgoing transactions
+        $customers_all = Customer::all();
+
+        OutgoingTransaction::create([
+            'product_id' => $products->first()->id,
+            'customer_id' => $customers_all->first()->id,
+            'user_id' => $employee->id,
+            'quantity' => 2,
+            'unit_price' => 24.99,
+            'total_price' => 49.98,
+            'invoice_number' => 'INV-2024-001',
+            'status' => 'completed',
+            'transaction_date' => Carbon::now()->subDay(),
+        ]);
+
+        OutgoingTransaction::create([
+            'product_id' => $products[1]->id,
+            'customer_id' => $customers_all[1]->id,
+            'user_id' => $employee->id,
+            'quantity' => 1,
+            'unit_price' => 49.99,
+            'total_price' => 49.99,
+            'invoice_number' => 'INV-2024-002',
+            'status' => 'completed',
+            'transaction_date' => Carbon::now(),
         ]);
     }
 }
