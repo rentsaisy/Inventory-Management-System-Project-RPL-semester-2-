@@ -35,6 +35,15 @@
             <p style="color: #666; margin-bottom: 1rem;">Analyze sales and top-selling items</p>
             <a href="{{ route('reports.sales') }}" class="btn btn-primary" style="width: 100%;">View Report</a>
         </div>
+
+        <div class="card" style="text-align: center; padding: 2rem;">
+            <div style="font-size: 3rem; color: #87CEEB; margin-bottom: 1rem;">
+                <i class="fas fa-calendar"></i>
+            </div>
+            <h3 style="margin-bottom: 0.5rem;">Monthly Report</h3>
+            <p style="color: #666; margin-bottom: 1rem;">Monthly inventory summary with incoming/outgoing transactions</p>
+            <a href="{{ route('reports.monthly') }}" class="btn btn-primary" style="width: 100%;">View Report</a>
+        </div>
     </div>
 </div>
 @endsection

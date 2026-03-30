@@ -377,6 +377,16 @@
             color: #856404;
         }
 
+        .badge-info {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .badge-secondary {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+
         .pagination {
             display: flex;
             gap: 0.5rem;
@@ -506,6 +516,16 @@
                         <i class="fas fa-arrow-right-arrow-left"></i> Stock Movements
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('incoming-transactions.index') }}" class="@if(request()->routeIs('incoming-transactions.*')) active @endif">
+                        <i class="fas fa-arrow-down"></i> Incoming Goods
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('outgoing-transactions.index') }}" class="@if(request()->routeIs('outgoing-transactions.*')) active @endif">
+                        <i class="fas fa-arrow-up"></i> Outgoing Goods
+                    </a>
+                </li>
 
                 <li class="menu-header">Management</li>
                 <li>
@@ -516,6 +536,11 @@
                 <li>
                     <a href="{{ route('suppliers.index') }}" class="@if(request()->routeIs('suppliers.*')) active @endif">
                         <i class="fas fa-truck"></i> Suppliers
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('customers.index') }}" class="@if(request()->routeIs('customers.*')) active @endif">
+                        <i class="fas fa-users"></i> Customers
                     </a>
                 </li>
 
