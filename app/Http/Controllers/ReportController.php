@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\StockMovement;
+use App\Models\IncomingTransaction;
+use App\Models\OutgoingTransaction;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class ReportController extends Controller
 {
@@ -146,4 +150,54 @@ class ReportController extends Controller
             'topItems' => $topItems,
         ]);
     }
-}
+
+    /**
+     * Show monthly inventory report with incoming/outgoing transactions.
+     */
+    public function monthlyReport(Request $request): View
+    {
+        // Get month and year from request or use current
+        $month = $request->get('month', now()->month);
+        $year = $request->get('year', now()->year);
+
+        $startDate = Carbon::createFromDate($year, $month, 1)->startOfMonth();
+        $endDate = Carbon::createFromDate($year, $month, 1)->endOfMonth();
+
+        // Get incoming and outgoing transactions for the month
+        $incomingTransactions = IncomingTransaction::whereBetween('transaction_date', [$startDate, $endDate])
+            ->with('product', 'supplier')
+            ->get();
+
+        $outgoingTransactions = OutgoingTransaction::whereBetween('transaction_date', [$startDate, $endDate])
+            ->with('product', 'customer')
+            ->get();
+
+        // Calculate totals
+        $totalIncoming = $incomingTransactions->sum('quantity');
+        $totalIncomingValue = $incomingTransactions->sum('total_price');
+        $totalOutgoing = $outgoingTransactions->sum('quantity');
+        $totalOutgoingValue = $outgoingTransactions->sum('total_price');
+
+        // Group by product
+        $incomingByProduct = $incomingTransactions->groupBy('product_id');
+        $outgoingByProduct = $outgoingTransactions->groupBy('product_id');
+
+        // Get current stock for all products
+        $products = Product::where('status', 'active')->with('category')->get();
+        $currentStock = $products->keyBy('id');
+
+        return view('reports.monthly', [
+            'month' => $month,
+            'year' => $year,
+            'incomingTransactions' => $incomingTransactions,
+            'outgoingTransactions' => $outgoingTransactions,
+            'totalIncoming' => $totalIncoming,
+            'totalIncomingValue' => $totalIncomingValue,
+            'totalOutgoing' => $totalOutgoing,
+            'totalOutgoingValue' => $totalOutgoingValue,
+            'incomingByProduct' => $incomingByProduct,
+            'outgoingByProduct' => $outgoingByProduct,
+            'products' => $products,
+            'currentStock' => $currentStock,
+        ]);
+    }
