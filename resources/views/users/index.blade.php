@@ -1,5 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+
+@section('page-title', 'User Management')
+
+@section('content')
+<div class="table-container">
+    <div class="table-header">
+        <div class="table-title">👤 User Management</div>
+        <a href="{{ url('/users/create') }}" class="btn-add">+ Add User</a>
+    </div>
+
+    @if ($users->count() > 0)
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td><strong>{{ $user->name }}</strong></td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->phone ?? '-' }}</td>
+                        <td>{{ ucfirst($user->role ?? 'user') }}</td>
+                        <td>
+                            <div style="display: flex; gap: 8px;">
+                                <a href="{{ url('/users/' . $user->id . '/edit') }}" class="btn-edit">Edit</a>
+                                @if($user->id !== auth()->user()->id)
+                                    <form method="POST" action="{{ url('/users/' . $user->id) }}" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn-delete" onclick="return confirm('Delete this user?')">Delete</button>
+                                    </form>
+                                @endif
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <div class="empty-state">
+            <div class="empty-state-icon">👤</div>
+            <p>No users found</p>
+            <a href="{{ url('/users/create') }}" class="btn-add">Create First User</a>
+        </div>
+    @endif
+</div>
+@endsection
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -1,5 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+
+@section('page-title', 'Add Outgoing Goods')
+
+@section('content')
+<div class="form-container">
+    <div class="form-title">📤 Add Outgoing Goods</div>
+
+    <form method="POST" action="{{ url('/outgoing') }}">
+        @csrf
+
+        <div class="form-group">
+            <label>Product</label>
+            <select name="product_id" required>
+                <option value="">Select Product</option>
+                @foreach($products as $product)
+                    <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>
+                        {{ $product->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Customer</label>
+            <select name="customer_id" required>
+                <option value="">Select Customer</option>
+                @foreach($customers as $customer)
+                    <option value="{{ $customer->id }}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
+                        {{ $customer->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="number" name="quantity" value="{{ old('quantity') }}" required>
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="transaction_date" value="{{ old('transaction_date', date('Y-m-d')) }}" required>
+            </div>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="btn-submit">Add Outgoing</button>
+            <a href="{{ url('/outgoing') }}" class="btn-cancel">Cancel</a>
+        </div>
+    </form>
+</div>
+@endsection
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

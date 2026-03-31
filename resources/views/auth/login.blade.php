@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Dainty Dream</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -30,11 +33,11 @@
 
         .login-container {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: 0 20px 60px rgba(6, 182, 212, 0.2), 0 0 40px rgba(56, 189, 248, 0.1);
             padding: 50px;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             backdrop-filter: blur(10px);
         }
 
@@ -44,9 +47,9 @@
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
             background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
             border-radius: 50%;
             display: flex;

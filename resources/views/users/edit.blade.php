@@ -1,5 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+
+@section('page-title', 'Edit User')
+
+@section('content')
+<div class="form-container">
+    <div class="form-title">👤 Edit User</div>
+
+    <form method="POST" action="{{ url('/users/' . $user->id) }}">
+        @csrf
+        @method('PUT')
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" value="{{ old('name', $user->name) }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" value="{{ old('email', $user->email) }}" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" name="phone" value="{{ old('phone', $user->phone) }}">
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select name="role">
+                    <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
+                    <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Password (Leave blank to keep current)</label>
+            <input type="password" name="password">
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" name="password_confirmation">
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="btn-submit">Update User</button>
+            <a href="{{ url('/users') }}" class="btn-cancel">Cancel</a>
+        </div>
+    </form>
+</div>
+@endsection
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
