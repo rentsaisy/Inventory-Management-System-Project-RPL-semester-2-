@@ -21,13 +21,8 @@ Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('dashboard');
     }
-    return redirect()->route('welcome');
+    return redirect()->route('login');
 });
-
-// Welcome page
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
