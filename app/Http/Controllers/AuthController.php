@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function loginForm(): View|\Illuminate\Http\RedirectResponse
     {
         if (Auth::check()) {
-            return redirect('/products');
+            return redirect('/dashboard');
         }
         return view('auth.login');
     }
@@ -37,7 +37,7 @@ class AuthController extends Controller
         if ($user && Hash::check($credentials['password'], $user->password)) {
             Auth::login($user);
             $request->session()->regenerate();
-            return redirect('/products');
+            return redirect('/dashboard');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials']);

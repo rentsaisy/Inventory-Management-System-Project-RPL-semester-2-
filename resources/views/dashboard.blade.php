@@ -69,22 +69,20 @@
             </tr>
         </thead>
         <tbody>
-            @if(isset($recentTransactions) && $recentTransactions->count() > 0)
-                @foreach($recentTransactions as $tx)
-                    <tr>
-                        <td><strong>{{ $tx->type ?? 'Unknown' }}</strong></td>
-                        <td>{{ $tx->product_name ?? 'N/A' }}</td>
-                        <td>{{ $tx->quantity ?? 0 }}</td>
-                        <td>{{ $tx->transaction_date ?? now()->format('M d, Y') }}</td>
-                    </tr>
-                @endforeach
-            @else
+            @forelse($recentTransactions as $tx)
+                <tr>
+                    <td><strong>{{ $tx->type ?? 'Unknown' }}</strong></td>
+                    <td>{{ $tx->product_name ?? 'N/A' }}</td>
+                    <td>{{ $tx->quantity ?? 0 }}</td>
+                    <td>{{ $tx->transaction_date ?? now()->format('M d, Y') }}</td>
+                </tr>
+            @empty
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 40px; color: #64748b;">
                         No transactions yet. Start by creating a transaction!
                     </td>
                 </tr>
-            @endif
+            @endforelse
         </tbody>
     </table>
 </div>

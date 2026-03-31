@@ -16,12 +16,12 @@ use App\Http\Middleware\EnsureUserIsAuthenticated;
 // Redirect root
 Route::get('/', function () {
     return Auth::check() ? redirect('/dashboard') : redirect('/login');
-});
+})->name('home');
 
 // Auth
-Route::get('/login', [AuthController::class, 'loginForm']);
+Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Protected Routes
 Route::middleware([EnsureUserIsAuthenticated::class])->group(function () {
