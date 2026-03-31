@@ -9,6 +9,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\IncomingTransactionController;
 use App\Http\Controllers\OutgoingTransactionController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
 // Redirect root
@@ -29,4 +30,5 @@ Route::middleware([EnsureUserIsAuthenticated::class])->group(function () {
     Route::resource('customers', CustomerController::class)->except('show');
     Route::resource('incoming', IncomingTransactionController::class)->except('show');
     Route::resource('outgoing', OutgoingTransactionController::class)->except('show');
+    Route::resource('users', UserController::class)->except('show');
 });
