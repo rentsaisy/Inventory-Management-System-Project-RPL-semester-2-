@@ -32,32 +32,6 @@
     </form>
 </div>
 @endsection
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Customer - Dainty Dream</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            min-height: 100vh;
-        }
-
-        .navbar {
-            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
-            color: white;
-            padding: 15px 40px;
-            box-shadow: 0 5px 20px rgba(6, 182, 212, 0.2);
-        }
-
-        .container {
-            max-width: 600px;
             margin: 40px auto;
             padding: 0 20px;
         }
