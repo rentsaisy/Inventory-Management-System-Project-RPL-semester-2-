@@ -129,7 +129,11 @@
 
         .sidebar-logout {
             margin-top: auto;
+<<<<<<< HEAD
+            padding: 0 12px 40px;
+=======
             padding: 0 12px 15px;
+>>>>>>> origin/main
             flex-shrink: 0;
         }
 
@@ -255,7 +259,11 @@
         /* CARDS */
         .summary-cards {
             display: grid;
+<<<<<<< HEAD
+            grid-template-columns: repeat(4, 1fr);
+=======
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+>>>>>>> origin/main
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -703,7 +711,11 @@
             <!-- Reports Section (placeholder) -->
             <div class="sidebar-section">
                 <div class="sidebar-section-title">Reports</div>
+<<<<<<< HEAD
+                <a href="{{ route('reports.monthly') }}" class="sidebar-link">
+=======
                 <a href="#" class="sidebar-link">
+>>>>>>> origin/main
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2V17zm4 0h-2V7h2V17zm4 0h-2v-4h2V17z"/>
                     </svg>

@@ -51,6 +51,8 @@
     </form>
 </div>
 @endsection
+<<<<<<< HEAD
+=======
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,6 +107,7 @@
         }
 
         input, select {
+>>>>>>> origin/main
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #cffafe;
