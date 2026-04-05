@@ -107,7 +107,6 @@
         }
 
         input, select {
->>>>>>> origin/main
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #cffafe;

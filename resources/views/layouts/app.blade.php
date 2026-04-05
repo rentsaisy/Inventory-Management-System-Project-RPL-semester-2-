@@ -129,11 +129,7 @@
 
         .sidebar-logout {
             margin-top: auto;
-<<<<<<< HEAD
             padding: 0 12px 40px;
-=======
-            padding: 0 12px 15px;
->>>>>>> origin/main
             flex-shrink: 0;
         }
 
@@ -259,11 +255,7 @@
         /* CARDS */
         .summary-cards {
             display: grid;
-<<<<<<< HEAD
             grid-template-columns: repeat(4, 1fr);
-=======
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
->>>>>>> origin/main
             gap: 20px;
             margin-bottom: 40px;
         }

@@ -11,10 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\IncomingTransactionController;
 use App\Http\Controllers\OutgoingTransactionController;
 use App\Http\Controllers\UserController;
-<<<<<<< HEAD
 use App\Http\Controllers\ReportController;
-=======
->>>>>>> origin/main
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 
 // Redirect root
@@ -39,10 +36,7 @@ Route::middleware([EnsureUserIsAuthenticated::class])->group(function () {
     Route::resource('incoming', IncomingTransactionController::class)->except('show');
     Route::resource('outgoing', OutgoingTransactionController::class)->except('show');
     Route::resource('users', UserController::class)->except('show');
-<<<<<<< HEAD
     
     // Report Routes
     Route::get('/reports/monthly', [ReportController::class, 'monthlyReport'])->name('reports.monthly');
-=======
->>>>>>> origin/main
 });
