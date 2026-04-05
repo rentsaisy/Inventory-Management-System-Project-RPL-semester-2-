@@ -51,6 +51,63 @@
     </form>
 </div>
 @endsection
+<<<<<<< HEAD
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Outgoing - Dainty Dream</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            color: white;
+            padding: 15px 40px;
+            box-shadow: 0 5px 20px rgba(6, 182, 212, 0.2);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+        }
+
+        h1 {
+            color: #0c4a6e;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0c4a6e;
+            font-weight: 600;
+        }
+
+        input, select {
+>>>>>>> origin/main
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #cffafe;
