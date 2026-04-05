@@ -13,13 +13,13 @@ class ReportController extends Controller
         $currentMonth = now();
         
         // Get incoming transactions for current month
-        $incomingTransactions = IncomingTransaction::whereMonth('created_at', $currentMonth->month)
-            ->whereYear('created_at', $currentMonth->year)
+        $incomingTransactions = IncomingTransaction::whereMonth('transaction_date', $currentMonth->month)
+            ->whereYear('transaction_date', $currentMonth->year)
             ->get();
         
         // Get outgoing transactions for current month
-        $outgoingTransactions = OutgoingTransaction::whereMonth('created_at', $currentMonth->month)
-            ->whereYear('created_at', $currentMonth->year)
+        $outgoingTransactions = OutgoingTransaction::whereMonth('transaction_date', $currentMonth->month)
+            ->whereYear('transaction_date', $currentMonth->year)
             ->get();
         
         // Calculate totals
