@@ -15,7 +15,9 @@ class ProductController extends Controller
     public function index(): View
     {
         $products = Product::with('category', 'supplier')->get();
-        return view('products.index', ['products' => $products]);
+        $categories = \App\Models\Category::all();
+        $suppliers = \App\Models\Supplier::all();
+        return view('products.index', ['products' => $products, 'categories' => $categories, 'suppliers' => $suppliers]);
     }
 
     /**
