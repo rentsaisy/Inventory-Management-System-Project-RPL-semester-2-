@@ -5,7 +5,7 @@
 @section('content')
 <div class="table-container">
     <div class="table-header">
-        <div class="table-title">📦 Product Inventory</div>
+        <div class="table-title"><svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Product Inventory</div>
         <button onclick="openAddProductModal()" class="btn-add">+ Add Product</button>
     </div>
 
@@ -59,7 +59,7 @@
         </table>
     @else
         <div class="empty-state">
-            <div class="empty-state-icon">📦</div>
+            <div class="empty-state-icon"><svg class="icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
             <p>No products found</p>
             <button onclick="openAddProductModal()" class="btn-add">Create First Product</button>
         </div>
@@ -70,7 +70,7 @@
 <div id="addProductModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>📦 Add New Product</h2>
+            <h2><svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Add New Product</h2>
             <button class="modal-close" onclick="closeAddProductModal()">&times;</button>
         </div>
         
@@ -164,7 +164,7 @@
 <div id="editProductModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>📦 Edit Product</h2>
+            <h2><svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Edit Product</h2>
             <button class="modal-close" onclick="closeEditProductModal()">&times;</button>
         </div>
         
@@ -354,6 +354,22 @@
         color: var(--danger);
         font-size: 12px;
         margin-top: 4px;
+    }
+
+    .icon-inline {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+        stroke: currentColor;
+    }
+
+    .icon-large {
+        width: 64px;
+        height: 64px;
+        color: var(--text-gray);
+        margin-bottom: 16px;
     }
 </style>
 
