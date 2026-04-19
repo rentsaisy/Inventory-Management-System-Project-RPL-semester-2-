@@ -48,28 +48,18 @@
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 25px;
-            background: linear-gradient(135deg, #B4E7FF 0%, #9ADEFF 25%, #8ADBFF 50%, #D4BAFF 75%, #E8B4FF 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            color: white;
-            box-shadow: 0 15px 40px rgba(197, 179, 224, 0.3);
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 20px;
+            border-radius: 0;
+            display: block;
+            box-shadow: none;
             position: relative;
+            object-fit: contain;
         }
 
         .logo::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent);
-            pointer-events: none;
+            display: none;
         }
 
         .login-header h1 {
@@ -204,9 +194,8 @@
 <body>
     <div class="login-container">
         <div class="login-header">
-            <div class="logo">👗</div>
-            <h1>Dainty Dream</h1>
-            <p>Thrift Inventory Management</p>
+            <img src="{{ asset('iconDainty.png') }}" alt="Dainty Dream" class="logo">
+            <p>Clothes Shop Inventory System</p>
         </div>
 
         @if ($errors->any())

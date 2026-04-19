@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dainty Dream - Inventory Management')</title>
-    <link rel="icon" type="image/jpeg" href="{{ asset('iconDD.jpeg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('iconDainty.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@
             width: 260px;
             background: var(--bg-white);
             border-right: 1px solid var(--border-light);
-            padding: 20px 0;
+            padding: 0px 0;
             box-shadow: 2px 0 15px rgba(197, 179, 224, 0.12);
             display: flex;
             flex-direction: column;
@@ -70,10 +70,11 @@
         .sidebar-logo {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
-            padding: 0 20px 20px;
+            padding: 0px 15px 10px;
             border-bottom: 1px solid var(--border-light);
-            margin-bottom: 15px;
+            margin: 0;
             font-size: 18px;
             font-weight: 700;
             color: var(--text-dark);
@@ -81,14 +82,15 @@
         }
 
         .sidebar-logo-icon {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            width: 100%;
+            height: auto;
+            max-width: 120px;
+            max-height: 120px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            object-fit: contain;
         }
 
         .sidebar-section {
@@ -650,8 +652,7 @@
         <!-- SIDEBAR -->
         <div class="sidebar">
             <div class="sidebar-logo">
-                <div class="sidebar-logo-icon">👗</div>
-                <div>Dainty Dream</div>
+                <img src="{{ asset('iconDainty.png') }}" alt="Dainty Dream" class="sidebar-logo-icon">
             </div>
 
             <!-- Dashboard -->
