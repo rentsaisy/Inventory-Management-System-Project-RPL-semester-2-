@@ -14,7 +14,7 @@ class IncomingTransactionController extends Controller
     public function index(): View
     {
         $transactions = IncomingTransaction::with('product', 'supplier')->get();
-        return view('incoming.index', ['transactions' => $transactions]);
+        return view('incoming.index', ['transactions' => $transactions, 'products' => Product::all(), 'suppliers' => Supplier::all()]);
     }
 
     public function create(): View

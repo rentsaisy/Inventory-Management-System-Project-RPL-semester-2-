@@ -14,7 +14,7 @@ class OutgoingTransactionController extends Controller
     public function index(): View
     {
         $transactions = OutgoingTransaction::with('product', 'customer')->get();
-        return view('outgoing.index', ['transactions' => $transactions]);
+        return view('outgoing.index', ['transactions' => $transactions, 'products' => Product::all(), 'customers' => Customer::all()]);
     }
 
     public function create(): View
