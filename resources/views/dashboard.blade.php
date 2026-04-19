@@ -57,7 +57,6 @@
 <div class="table-container">
     <div class="table-header">
         <div class="table-title">Recent Transactions</div>
-        <a href="{{ url('/incoming') }}" class="btn-add">+ New Transaction</a>
     </div>
     <table>
         <thead>

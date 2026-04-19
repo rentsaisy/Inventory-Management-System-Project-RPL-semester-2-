@@ -364,6 +364,17 @@
             font-size: 18px;
             font-weight: 700;
             color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-inline {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
         }
 
         .btn-add {

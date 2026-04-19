@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('page-title', 'Outgoing Goods')
+@section('page-title', 'Outgoing Clothes')
 
 @section('content')
 <div class="table-container">
     <div class="table-header">
-        <div class="table-title"><svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9"></path><polyline points="17 14 12 9 7 14"></polyline><line x1="12" y1="9" x2="12" y2="21"></line></svg> Outgoing Goods (Sales/Stock Out)</div>
+        <div class="table-title"><svg class="icon-inline" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg> Stock Out</div>
         <button onclick="openAddOutgoingModal()" class="btn-add">+ Add Outgoing</button>
     </div>
 

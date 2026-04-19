@@ -5,7 +5,7 @@
 @section('content')
 <div class="table-container">
     <div class="table-header">
-        <div class="table-title"><svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6 0"></path><path d="M5 14l1 0"></path><path d="M19 14l1 0"></path><path d="M17 6l2 0"></path><path d="M5 6l2 0"></path><path d="M6 10a1 1 0 0 0 -1 1v3a6 6 0 0 0 6 6h2a6 6 0 0 0 6 -6v-3a1 1 0 0 0 -1 -1"></path><path d="M6 10v-4a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4"></path></svg> Supplier Management</div>
+        <div class="table-title"><svg class="icon-inline" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> Supplier Management</div>
         <button onclick="openAddSupplierModal()" class="btn-add">+ Add Supplier</button>
     </div>
 
