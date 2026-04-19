@@ -108,11 +108,11 @@
         }
 
         .header h1 {
-            color: #0c4a6e;
+            color: #7C6BA8;
         }
 
         .btn-add {
-            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            background: linear-gradient(135deg, #B4E7FF 0%, #D4BAFF 50%, #F4A8D4 100%);
             color: white;
             padding: 12px 30px;
             border: none;
@@ -124,7 +124,7 @@
 
         .btn-add:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+            box-shadow: 0 10px 30px rgba(197, 179, 224, 0.3);
         }
 
         table {
@@ -133,11 +133,11 @@
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
+            box-shadow: 0 10px 30px rgba(197, 179, 224, 0.1);
         }
 
         thead {
-            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            background: linear-gradient(135deg, #B4E7FF 0%, #D4BAFF 100%);
             color: white;
         }
 
@@ -149,11 +149,11 @@
 
         td {
             padding: 15px;
-            border-bottom: 1px solid #e0f2fe;
+            border-bottom: 1px solid #E8D7FF;
         }
 
         tbody tr:hover {
-            background: #f0f9ff;
+            background: #F8F3FF;
         }
 
         .actions {
@@ -172,27 +172,29 @@
         }
 
         .btn-edit {
-            background: #38bdf8;
-            color: white;
+            background: #B4E7FF;
+            color: #7C6BA8;
+            font-weight: 600;
         }
 
         .btn-edit:hover {
-            background: #0ea5e9;
+            background: #8ADBFF;
+            color: white;
         }
 
         .btn-delete {
-            background: #ef4444;
+            background: #F5A8A8;
             color: white;
         }
 
         .btn-delete:hover {
-            background: #dc2626;
+            background: #E88888;
         }
 
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: #64748b;
+            color: #B8A8D8;
         }
 
         .empty-state p {
@@ -214,7 +216,7 @@
 
     <div class="container">
         @if (session('msg'))
-            <div style="background: #dbeafe; color: #0c4a6e; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #38bdf8;">
+            <div style="background: #E8F4FF; color: #7C6BA8; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #B4E7FF;">
                 {{ session('msg') }}
             </div>
         @endif
@@ -242,7 +244,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->phone ?? '-' }}</td>
                             <td>
-                                <span style="background: #dbeafe; color: #0c4a6e; padding: 5px 10px; border-radius: 20px; font-size: 12px;">
+                                <span style="background: #E8F4FF; color: #7C6BA8; padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: 600;">
                                     {{ ucfirst($user->role ?? 'user') }}
                                 </span>
                             </td>

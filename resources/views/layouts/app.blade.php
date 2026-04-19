@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dainty Dream - Inventory Management')</title>
+    <link rel="icon" type="image/jpeg" href="{{ asset('iconDD.jpeg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,18 +17,25 @@
         }
 
         :root {
-            --primary: #38bdf8;
-            --primary-dark: #0ea5e9;
-            --primary-light: #cffafe;
-            --secondary: #06b6d4;
-            --bg-light: #f0f9ff;
-            --bg-white: #ffffff;
-            --text-dark: #0c4a6e;
-            --text-gray: #64748b;
-            --border-light: #e0f2fe;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
+            --primary: #B4E7FF;
+            --primary-dark: #8ADBFF;
+            --primary-light: #E8F4FF;
+            --secondary: #D4BAFF;
+            --secondary-dark: #C5B3E0;
+            --secondary-light: #EDD9FF;
+            --accent: #F4A8D4;
+            --accent-light: #FFD9E8;
+            --bg-light: #F5ECFF;
+            --bg-white: #FAFBFE;
+            --bg-gradient-1: #F5E6FF;
+            --bg-gradient-2: #E8D7FF;
+            --bg-gradient-3: #D5E8FF;
+            --text-dark: #7C6BA8;
+            --text-gray: #B8A8D8;
+            --border-light: #E8D7FF;
+            --success: #A8E6B8;
+            --warning: #FFD9A8;
+            --danger: #F5A8A8;
         }
 
         html, body {
@@ -36,7 +44,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-light);
+            background: linear-gradient(135deg, #F5E6FF 0%, #E8D7FF 25%, #D5E8FF 50%, #C8E5FF 75%, #FFD9E8 100%);
             color: var(--text-dark);
         }
 
@@ -52,7 +60,7 @@
             background: var(--bg-white);
             border-right: 1px solid var(--border-light);
             padding: 20px 0;
-            box-shadow: 2px 0 15px rgba(6, 182, 212, 0.08);
+            box-shadow: 2px 0 15px rgba(197, 179, 224, 0.12);
             display: flex;
             flex-direction: column;
             height: 100vh;
@@ -112,7 +120,7 @@
         }
 
         .sidebar-link:hover {
-            background: var(--bg-light);
+            background: var(--primary-light);
             color: var(--primary);
         }
 
@@ -140,8 +148,8 @@
             gap: 6px;
             width: 100%;
             padding: 9px 12px;
-            background: #fee2e2;
-            color: #991b1b;
+            background: #FFE8E8;
+            color: #C45555;
             border: none;
             border-radius: 6px;
             font-weight: 600;
@@ -151,7 +159,7 @@
         }
 
         .logout-btn:hover {
-            background: #fecaca;
+            background: #FFD4D4;
         }
 
         /* MAIN CONTENT */
@@ -169,7 +177,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.05);
+            box-shadow: 0 2px 8px rgba(197, 179, 224, 0.08);
         }
 
         .page-title {
@@ -241,14 +249,14 @@
         }
 
         .alert-success {
-            background: #dbeafe;
-            color: #0c4a6e;
-            border-left: 4px solid var(--primary);
+            background: #D5F5E8;
+            color: #2D6B5F;
+            border-left: 4px solid var(--success);
         }
 
         .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
+            background: #FFE8E8;
+            color: #8B5555;
             border-left: 4px solid var(--danger);
         }
 
@@ -264,13 +272,13 @@
             background: var(--bg-white);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08);
+            box-shadow: 0 4px 15px rgba(197, 179, 224, 0.08);
             transition: all 0.3s ease;
         }
 
         .summary-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.12);
+            box-shadow: 0 8px 25px rgba(197, 179, 224, 0.15);
         }
 
         .card-header {
@@ -291,22 +299,22 @@
         }
 
         .card-icon.primary {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--primary);
+            background: rgba(180, 231, 255, 0.25);
+            color: var(--primary-dark);
         }
 
         .card-icon.secondary {
-            background: rgba(6, 182, 212, 0.1);
-            color: var(--secondary);
+            background: rgba(212, 186, 255, 0.25);
+            color: var(--secondary-dark);
         }
 
         .card-icon.success {
-            background: rgba(16, 185, 129, 0.1);
+            background: rgba(168, 230, 184, 0.25);
             color: var(--success);
         }
 
         .card-icon.warning {
-            background: rgba(245, 158, 11, 0.1);
+            background: rgba(255, 217, 168, 0.25);
             color: var(--warning);
         }
 
@@ -335,7 +343,7 @@
         .table-container {
             background: var(--bg-white);
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08);
+            box-shadow: 0 4px 15px rgba(197, 179, 224, 0.08);
             overflow: hidden;
         }
 
@@ -371,7 +379,7 @@
 
         .btn-add:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+            box-shadow: 0 8px 20px rgba(133, 212, 240, 0.35);
         }
 
         table {
@@ -410,7 +418,7 @@
             background: var(--bg-white);
             border-radius: 12px;
             padding: 40px;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08);
+            box-shadow: 0 4px 15px rgba(197, 179, 224, 0.08);
             max-width: 600px;
         }
 
@@ -448,7 +456,7 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+            box-shadow: 0 0 0 3px rgba(133, 212, 240, 0.15);
         }
 
         .form-row {
@@ -478,7 +486,7 @@
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+            box-shadow: 0 8px 20px rgba(133, 212, 240, 0.35);
         }
 
         .btn-cancel {
@@ -512,7 +520,7 @@
         }
 
         .btn-edit {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(133, 212, 240, 0.15);
             color: var(--primary);
         }
 
@@ -522,7 +530,7 @@
         }
 
         .btn-delete {
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(245, 168, 168, 0.2);
             color: var(--danger);
         }
 
@@ -532,8 +540,8 @@
         }
 
         .error-list {
-            background: #fee2e2;
-            color: #991b1b;
+            background: #FFE8E8;
+            color: #8B5555;
             padding: 15px 20px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -571,7 +579,7 @@
             background: var(--bg-white);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.08);
+            box-shadow: 0 4px 15px rgba(197, 179, 224, 0.08);
             margin-bottom: 40px;
         }
 

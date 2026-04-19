@@ -13,12 +13,12 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(135deg, #F5E6FF 0%, #E8D7FF 20%, #D5E8FF 40%, #C8E5FF 60%, #FFD9E8 80%, #FFE4F0 100%);
             min-height: 100vh;
         }
 
         .navbar {
-            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            background: linear-gradient(135deg, #B4E7FF 0%, #D4BAFF 100%);
             color: white;
             padding: 15px 40px;
             display: flex;
@@ -56,11 +56,11 @@
         }
 
         .header h1 {
-            color: #0c4a6e;
+            color: #7C6BA8;
         }
 
         .btn-add {
-            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            background: linear-gradient(135deg, #B4E7FF 0%, #D4BAFF 100%);
             color: white;
             padding: 12px 30px;
             border: none;
@@ -85,7 +85,7 @@
         }
 
         thead {
-            background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+            background: linear-gradient(135deg, #B4E7FF 0%, #D4BAFF 100%);
             color: white;
         }
 
@@ -97,7 +97,7 @@
 
         td {
             padding: 15px;
-            border-bottom: 1px solid #e0f2fe;
+            border-bottom: 1px solid #E8D7FF;
         }
 
         tbody tr:hover {
@@ -120,7 +120,7 @@
         }
 
         .btn-edit {
-            background: #38bdf8;
+            background: #B4E7FF;
             color: white;
         }
 
@@ -188,7 +188,7 @@
                         <tr>
                             <td><strong>{{ $tx->product->name ?? '-' }}</strong></td>
                             <td>{{ $tx->customer->name ?? '-' }}</td>
-                            <td><span style="background: #e0f2fe; padding: 5px 10px; border-radius: 5px;">{{ $tx->quantity }}</span></td>
+                            <td><span style="background: #E8D7FF; padding: 5px 10px; border-radius: 5px;">{{ $tx->quantity }}</span></td>
                             <td>{{ $tx->transaction_date }}</td>
                             <td>
                                 <div class="actions">

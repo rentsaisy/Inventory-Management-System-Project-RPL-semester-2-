@@ -98,16 +98,16 @@
                     {
                         label: 'Incoming',
                         data: [12, 19, 3, 5, 2, 3, 7, 4, 6, 5, 8, 9],
-                        backgroundColor: 'rgba(56, 189, 248, 0.2)',
-                        borderColor: 'rgba(56, 189, 248, 1)',
+                        backgroundColor: 'rgba(180, 231, 255, 0.2)',
+                        borderColor: 'rgba(180, 231, 255, 1)',
                         borderWidth: 2,
                         borderRadius: 6
                     },
                     {
                         label: 'Outgoing',
                         data: [8, 12, 5, 9, 7, 11, 4, 8, 5, 7, 6, 10],
-                        backgroundColor: 'rgba(6, 182, 212, 0.2)',
-                        borderColor: 'rgba(6, 182, 212, 1)',
+                        backgroundColor: 'rgba(212, 186, 255, 0.2)',
+                        borderColor: 'rgba(212, 186, 255, 1)',
                         borderWidth: 2,
                         borderRadius: 6
                     }
@@ -125,7 +125,7 @@
                                 size: 12,
                                 weight: '600'
                             },
-                            color: '#0c4a6e'
+                            color: '#7C6BA8'
                         }
                     }
                 },
@@ -139,7 +139,7 @@
                             }
                         },
                         grid: {
-                            color: '#e0f2fe'
+                            color: '#E8D7FF'
                         }
                     },
                     x: {
