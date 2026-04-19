@@ -11,7 +11,7 @@
                 <div class="card-value">{{ $totalProducts ?? 0 }}</div>
                 <div class="card-change">✓ In stock</div>
             </div>
-            <div class="card-icon primary">📦</div>
+            <div class="card-icon primary"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21 16.5c0 .5-.5 1-1 1H4c-.5 0-1-.5-1-1v-9h18v9zm0-11h-3V4c0-.5-.5-1-1-1h-8c-.5 0-1 .5-1 1v1.5H4c-.5 0-1 .5-1 1v1.5h18V6.5c0-.5-.5-1-1-1zm-4-1.5v-1h-6v1h6z"/></svg></div>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
                 <div class="card-value">${{ number_format($totalStock ?? 0, 0) }}</div>
                 <div class="card-change">✓ Calculated</div>
             </div>
-            <div class="card-icon secondary">💎</div>
+            <div class="card-icon secondary"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
                 <div class="card-value">{{ $totalTransactions ?? 0 }}</div>
                 <div class="card-change">✓ This month</div>
             </div>
-            <div class="card-icon success">📊</div>
+            <div class="card-icon success"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2V17zm4 0h-2V7h2V17zm4 0h-2v-11h2V17z"/></svg></div>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
                 <div class="card-value">${{ number_format($monthlyRevenue ?? 0, 0) }}</div>
                 <div class="card-change">✓ Updated</div>
             </div>
-            <div class="card-icon warning">💰</div>
+            <div class="card-icon warning"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></div>
         </div>
     </div>
 </div>
