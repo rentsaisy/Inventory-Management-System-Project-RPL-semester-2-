@@ -40,12 +40,23 @@
 
         html, body {
             height: 100%;
+            overflow: hidden;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #F5E6FF 0%, #E8D7FF 25%, #D5E8FF 50%, #C8E5FF 75%, #FFD9E8 100%);
             color: var(--text-dark);
+        }
+
+        /* Hide scrollbar while keeping functionality */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         .container-layout {
@@ -228,7 +239,25 @@
         .content {
             flex: 1;
             overflow-y: auto;
-            padding: 40px;
+            padding: 20px;
+        }
+
+        /* Custom Scrollbar Styling */
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #D4BAFF;
+            border-radius: 4px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: #C5B3E0;
         }
 
         /* MESSAGES */
