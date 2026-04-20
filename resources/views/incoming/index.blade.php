@@ -66,7 +66,7 @@
 <div id="addIncomingModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2><svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Add Incoming Goods</h2>
+            <h2><svg class="icon-inline" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> Add Incoming Goods</h2>
             <button class="modal-close" onclick="closeAddIncomingModal()">&times;</button>
         </div>
         
@@ -132,7 +132,7 @@
 <div id="editIncomingModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2><svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Edit Incoming Goods</h2>
+            <h2><svg class="icon-inline" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> Edit Incoming Goods</h2>
             <button class="modal-close" onclick="closeEditIncomingModal()">&times;</button>
         </div>
         
