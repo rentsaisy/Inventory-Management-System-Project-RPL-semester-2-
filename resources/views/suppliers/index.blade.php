@@ -14,8 +14,8 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>City</th>
                     <th>Phone</th>
+                    <th>Address</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -23,15 +23,15 @@
                 @foreach ($suppliers as $supplier)
                     <tr>
                         <td><strong>{{ $supplier->name }}</strong></td>
-                        <td>{{ $supplier->city ?? '-' }}</td>
                         <td>{{ $supplier->phone ?? '-' }}</td>
+                        <td>{{ $supplier->address ?? '-' }}</td>
                         <td>
                             <div style="display: flex; gap: 8px;">
                                 <button 
                                     class="btn-edit" 
                                     data-supplier-id="{{ $supplier->id }}"
                                     data-name="{{ $supplier->name }}"
-                                    data-city="{{ $supplier->city }}"
+                                    data-address="{{ $supplier->address }}"
                                     data-phone="{{ $supplier->phone }}"
                                     onclick="openEditSupplierModal(this)">Edit</button>
                                 <form id="deleteForm-{{ $supplier->id }}" method="POST" action="{{ url('/suppliers/' . $supplier->id) }}" style="display: none;">
@@ -78,21 +78,20 @@
                 @enderror
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>City</label>
-                    <input type="text" name="city" value="{{ old('city') }}">
-                    @error('city')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" name="phone" value="{{ old('phone') }}">
-                    @error('phone')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" name="phone" value="{{ old('phone') }}">
+                @error('phone')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <textarea name="address" rows="4">{{ old('address') }}</textarea>
+                @error('address')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="modal-footer">
@@ -123,21 +122,20 @@
                 @enderror
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>City</label>
-                    <input type="text" name="city" id="edit_city">
-                    @error('city')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" name="phone" id="edit_phone">
-                    @error('phone')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" name="phone" id="edit_phone">
+                @error('phone')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <textarea name="address" id="edit_address" rows="4"></textarea>
+                @error('address')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="modal-footer">
@@ -331,12 +329,12 @@
     function openEditSupplierModal(button) {
         const supplierId = button.dataset.supplierId;
         const name = button.dataset.name;
-        const city = button.dataset.city;
+        const address = button.dataset.address;
         const phone = button.dataset.phone;
 
         document.getElementById('edit_name').value = name;
-        document.getElementById('edit_city').value = city || '';
         document.getElementById('edit_phone').value = phone || '';
+        document.getElementById('edit_address').value = address || '';
         document.getElementById('editSupplierForm').action = '/suppliers/' + supplierId;
         
         document.getElementById('editSupplierModal').classList.add('show');
