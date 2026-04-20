@@ -36,16 +36,14 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'sku' => 'required|unique:m_products',
             'name' => 'required',
             'category_id' => 'required',
             'supplier_id' => 'required',
-            'condition_status' => 'nullable',
-            'price' => 'nullable|numeric',
-            'stock' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
-        Product::create($request->all());
+        Product::create($request->only(['name', 'category_id', 'supplier_id', 'price', 'stock']));
         return redirect('/products')->with('msg', 'Product added!');
     }
 
@@ -65,15 +63,14 @@ class ProductController extends Controller
     public function update(Request $request, Product $product): RedirectResponse
     {
         $request->validate([
-            'sku' => 'required',
             'name' => 'required',
             'category_id' => 'required',
             'supplier_id' => 'required',
-            'price' => 'nullable|numeric',
-            'stock' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
         ]);
 
-        $product->update($request->all());
+        $product->update($request->only(['name', 'category_id', 'supplier_id', 'price', 'stock']));
         return redirect('/products')->with('msg', 'Product updated!');
     }
 

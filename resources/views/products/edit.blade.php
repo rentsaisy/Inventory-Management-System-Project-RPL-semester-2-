@@ -23,10 +23,6 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label>SKU</label>
-                <input type="text" name="sku" value="{{ old('sku', $product->sku) }}" required>
-            </div>
-            <div class="form-group">
                 <label>Product Name</label>
                 <input type="text" name="name" value="{{ old('name', $product->name) }}" required>
             </div>
@@ -65,17 +61,6 @@
                 <label>Stock Quantity</label>
                 <input type="number" name="stock" value="{{ old('stock', $product->stock) }}" required>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label>Condition Status</label>
-            <select name="condition_status">
-                <option value="">Select Condition</option>
-                <option value="New" {{ old('condition_status', $product->condition_status) == 'New' ? 'selected' : '' }}>New</option>
-                <option value="Like New" {{ old('condition_status', $product->condition_status) == 'Like New' ? 'selected' : '' }}>Like New</option>
-                <option value="Good" {{ old('condition_status', $product->condition_status) == 'Good' ? 'selected' : '' }}>Good</option>
-                <option value="Fair" {{ old('condition_status', $product->condition_status) == 'Fair' ? 'selected' : '' }}>Fair</option>
-            </select>
         </div>
 
         <div class="form-buttons">

@@ -19,7 +19,6 @@
                     <th>Supplier</th>
                     <th>Price</th>
                     <th>Stock</th>
-                    <th>Condition</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -32,19 +31,16 @@
                         <td>{{ $product->supplier->name ?? '-' }}</td>
                         <td>${{ number_format($product->price, 2) }}</td>
                         <td>{{ $product->stock }}</td>
-                        <td>{{ $product->condition_status ?? '-' }}</td>
                         <td>
                             <div style="display: flex; gap: 8px;">
                                 <button 
                                     class="btn-edit" 
                                     data-product-id="{{ $product->id }}"
-                                    data-sku="{{ $product->sku }}"
                                     data-name="{{ $product->name }}"
                                     data-category-id="{{ $product->category_id }}"
                                     data-supplier-id="{{ $product->supplier_id }}"
                                     data-price="{{ $product->price }}"
                                     data-stock="{{ $product->stock }}"
-                                    data-condition="{{ $product->condition_status }}"
                                     onclick="openEditProductModal(this)">Edit</button>
                                 <form id="deleteForm-{{ $product->id }}" method="POST" action="{{ url('/products/' . $product->id) }}" style="display: none;">
                                     @csrf
@@ -82,21 +78,12 @@
         <form method="POST" action="{{ url('/products') }}" class="modal-body">
             @csrf
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>SKU</label>
-                    <input type="text" name="sku" value="{{ old('sku') }}" required>
-                    @error('sku')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Product Name</label>
-                    <input type="text" name="name" value="{{ old('name') }}" required>
-                    @error('name')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="name" value="{{ old('name') }}" required>
+                @error('name')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -146,17 +133,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label>Condition Status</label>
-                <select name="condition_status">
-                    <option value="">Select Condition</option>
-                    <option value="New" {{ old('condition_status') == 'New' ? 'selected' : '' }}>New</option>
-                    <option value="Like New" {{ old('condition_status') == 'Like New' ? 'selected' : '' }}>Like New</option>
-                    <option value="Good" {{ old('condition_status') == 'Good' ? 'selected' : '' }}>Good</option>
-                    <option value="Fair" {{ old('condition_status') == 'Fair' ? 'selected' : '' }}>Fair</option>
-                </select>
-            </div>
-
             <div class="modal-footer">
                 <button type="submit" class="btn-submit">Add Product</button>
                 <button type="button" class="btn-cancel" onclick="closeAddProductModal()">Cancel</button>
@@ -177,21 +153,12 @@
             @csrf
             @method('PUT')
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>SKU</label>
-                    <input type="text" name="sku" id="edit_sku" required>
-                    @error('sku')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Product Name</label>
-                    <input type="text" name="name" id="edit_name" required>
-                    @error('name')
-                        <span class="error-message">{{ $message }}</span>
-                    @enderror
-                </div>
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="name" id="edit_name" required>
+                @error('name')
+                    <span class="error-message">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -235,17 +202,6 @@
                         <span class="error-message">{{ $message }}</span>
                     @enderror
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label>Condition Status</label>
-                <select name="condition_status" id="edit_condition_status">
-                    <option value="">Select Condition</option>
-                    <option value="New">New</option>
-                    <option value="Like New">Like New</option>
-                    <option value="Good">Good</option>
-                    <option value="Fair">Fair</option>
-                </select>
             </div>
 
             <div class="modal-footer">
@@ -444,21 +400,17 @@
 
     function openEditProductModal(button) {
         const productId = button.dataset.productId;
-        const sku = button.dataset.sku;
         const name = button.dataset.name;
         const categoryId = button.dataset.categoryId;
         const supplierId = button.dataset.supplierId;
         const price = button.dataset.price;
         const stock = button.dataset.stock;
-        const condition = button.dataset.condition;
 
-        document.getElementById('edit_sku').value = sku;
         document.getElementById('edit_name').value = name;
         document.getElementById('edit_category_id').value = categoryId;
         document.getElementById('edit_supplier_id').value = supplierId;
         document.getElementById('edit_price').value = price;
         document.getElementById('edit_stock').value = stock;
-        document.getElementById('edit_condition_status').value = condition;
         document.getElementById('editProductForm').action = '/products/' + productId;
         
         document.getElementById('editProductModal').classList.add('show');
