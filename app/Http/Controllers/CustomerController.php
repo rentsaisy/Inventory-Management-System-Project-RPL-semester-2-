@@ -21,7 +21,7 @@ class CustomerController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        Customer::create($request->validate(['name' => 'required', 'city' => 'nullable', 'phone' => 'nullable']));
+        Customer::create($request->validate(['name' => 'required', 'address' => 'nullable', 'phone' => 'nullable']));
         return redirect('/customers');
     }
 
@@ -32,7 +32,7 @@ class CustomerController extends Controller
 
     public function update(Request $request, Customer $customer): RedirectResponse
     {
-        $customer->update($request->validate(['name' => 'required', 'city' => 'nullable', 'phone' => 'nullable']));
+        $customer->update($request->validate(['name' => 'required', 'address' => 'nullable', 'phone' => 'nullable']));
         return redirect('/customers');
     }
 

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     protected $table = 'm_customers';
-    protected $fillable = ['name', 'city', 'phone'];
+    protected $fillable = ['name', 'address', 'phone'];
     public $timestamps = false;
 }

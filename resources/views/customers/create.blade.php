@@ -14,15 +14,14 @@
             <input type="text" name="name" value="{{ old('name') }}" required>
         </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label>City</label>
-                <input type="text" name="city" value="{{ old('city') }}">
-            </div>
-            <div class="form-group">
-                <label>Phone</label>
-                <input type="text" name="phone" value="{{ old('phone') }}">
-            </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" name="phone" value="{{ old('phone') }}">
+        </div>
+
+        <div class="form-group">
+            <label>Address</label>
+            <textarea name="address" rows="4">{{ old('address') }}</textarea>
         </div>
 
         <div class="form-buttons">

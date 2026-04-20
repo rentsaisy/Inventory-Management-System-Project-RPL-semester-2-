@@ -21,7 +21,7 @@ class SupplierController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        Supplier::create($request->validate(['name' => 'required', 'city' => 'nullable', 'phone' => 'nullable']));
+        Supplier::create($request->validate(['name' => 'required', 'address' => 'nullable', 'phone' => 'nullable']));
         return redirect('/suppliers');
     }
 
@@ -32,7 +32,7 @@ class SupplierController extends Controller
 
     public function update(Request $request, Supplier $supplier): RedirectResponse
     {
-        $supplier->update($request->validate(['name' => 'required', 'city' => 'nullable', 'phone' => 'nullable']));
+        $supplier->update($request->validate(['name' => 'required', 'address' => 'nullable', 'phone' => 'nullable']));
         return redirect('/suppliers');
     }
 
