@@ -39,6 +39,13 @@
                 <input type="number" name="quantity" value="{{ old('quantity') }}" required>
             </div>
             <div class="form-group">
+                <label>Unit Price</label>
+                <input type="number" step="0.01" name="price" value="{{ old('price') }}" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
                 <label>Date</label>
                 <input type="date" name="transaction_date" value="{{ old('transaction_date', date('Y-m-d')) }}" required>
             </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class IncomingTransaction extends Model
 {
     protected $table = 't_incoming_transactions';
-    protected $fillable = ['product_id', 'supplier_id', 'quantity', 'transaction_date'];
+    protected $fillable = ['product_id', 'supplier_id', 'quantity', 'price', 'transaction_date'];
     public $timestamps = false;
 
     public function product()
