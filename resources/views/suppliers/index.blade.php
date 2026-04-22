@@ -60,9 +60,7 @@
         </div>
     @else
         <div class="empty-state">
-            <div class="empty-state-icon"><svg class="icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6 0"></path><path d="M5 14l1 0"></path><path d="M19 14l1 0"></path><path d="M17 6l2 0"></path><path d="M5 6l2 0"></path><path d="M6 10a1 1 0 0 0 -1 1v3a6 6 0 0 0 6 6h2a6 6 0 0 0 6 -6v-3a1 1 0 0 0 -1 -1"></path><path d="M6 10v-4a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4"></path></svg></div>
             <p>No suppliers found</p>
-            <button onclick="openAddSupplierModal()" class="btn-add">Create First Supplier</button>
         </div>
     @endif
 </div>

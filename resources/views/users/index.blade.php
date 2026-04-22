@@ -45,9 +45,7 @@
         </table>
     @else
         <div class="empty-state">
-            <div class="empty-state-icon">👤</div>
             <p>No users found</p>
-            <a href="{{ url('/users/create') }}" class="btn-add">Create First User</a>
         </div>
     @endif
 </div>
