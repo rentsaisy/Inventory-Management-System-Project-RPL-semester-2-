@@ -16,6 +16,8 @@
                     <th>Product</th>
                     <th>Supplier</th>
                     <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
                     <th>Date</th>
                     <th>Actions</th>
                 </tr>
@@ -26,6 +28,8 @@
                         <td>{{ $tx->product->name ?? 'N/A' }}</td>
                         <td>{{ $tx->supplier->name ?? 'N/A' }}</td>
                         <td>{{ $tx->quantity }}</td>
+                        <td>Rp {{ number_format($tx->price, 2, ',', '.') }}</td>
+                        <td><strong>Rp {{ number_format($tx->quantity * $tx->price, 2, ',', '.') }}</strong></td>
                         <td>{{ \Carbon\Carbon::parse($tx->transaction_date)->format('M d, Y') }}</td>
                         <td>
                             <div style="display: flex; gap: 8px;">
@@ -35,6 +39,7 @@
                                     data-product-id="{{ $tx->product_id }}"
                                     data-supplier-id="{{ $tx->supplier_id }}"
                                     data-quantity="{{ $tx->quantity }}"
+                                    data-price="{{ $tx->price }}"
                                     data-transaction-date="{{ $tx->transaction_date }}"
                                     onclick="openEditIncomingModal(this)">Edit</button>
                                 <form id="deleteForm-{{ $tx->id }}" method="POST" action="{{ url('/incoming/' . $tx->id) }}" style="display: none;">
@@ -120,6 +125,16 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label>Unit Price</label>
+                    <input type="number" step="0.01" name="price" value="{{ old('price') }}" required>
+                    @error('price')
+                        <span class="error-message">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
                     <label>Date</label>
                     <input type="date" name="transaction_date" value="{{ old('transaction_date', date('Y-m-d')) }}" required>
                     @error('transaction_date')
@@ -182,6 +197,16 @@
                         <span class="error-message">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label>Unit Price</label>
+                    <input type="number" step="0.01" name="price" id="edit_price" required>
+                    @error('price')
+                        <span class="error-message">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-row">
                 <div class="form-group">
                     <label>Date</label>
                     <input type="date" name="transaction_date" id="edit_transaction_date" required>
@@ -505,11 +530,13 @@
         const productId = button.dataset.productId;
         const supplierId = button.dataset.supplierId;
         const quantity = button.dataset.quantity;
+        const price = button.dataset.price;
         const transactionDate = button.dataset.transactionDate;
 
         document.getElementById('edit_product_id').value = productId;
         document.getElementById('edit_supplier_id').value = supplierId;
         document.getElementById('edit_quantity').value = quantity;
+        document.getElementById('edit_price').value = price;
         document.getElementById('edit_transaction_date').value = transactionDate;
         document.getElementById('editIncomingForm').action = '/incoming/' + transactionId;
         
