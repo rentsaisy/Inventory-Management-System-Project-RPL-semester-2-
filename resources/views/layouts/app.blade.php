@@ -454,6 +454,15 @@
             color: var(--text-dark);
         }
 
+        th:last-child,
+        td:last-child {
+            text-align: right;
+        }
+
+        td:last-child > div {
+            justify-content: flex-end;
+        }
+
         tbody tr:hover {
             background: var(--bg-light);
         }
