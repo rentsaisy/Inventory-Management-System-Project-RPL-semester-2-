@@ -28,6 +28,7 @@ class IncomingTransactionController extends Controller
             'product_id' => 'required',
             'supplier_id' => 'required',
             'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
             'transaction_date' => 'required|date'
         ]));
         return redirect('/incoming')->with('msg', 'Stock in recorded!');
@@ -44,6 +45,7 @@ class IncomingTransactionController extends Controller
             'product_id' => 'required',
             'supplier_id' => 'required',
             'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
             'transaction_date' => 'required|date'
         ]));
         return redirect('/incoming')->with('msg', 'Stock in updated!');

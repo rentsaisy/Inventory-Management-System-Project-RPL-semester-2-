@@ -28,6 +28,7 @@ class OutgoingTransactionController extends Controller
             'product_id' => 'required',
             'customer_id' => 'required',
             'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
             'transaction_date' => 'required|date'
         ]));
         return redirect('/outgoing')->with('msg', 'Stock out recorded!');
@@ -44,6 +45,7 @@ class OutgoingTransactionController extends Controller
             'product_id' => 'required',
             'customer_id' => 'required',
             'quantity' => 'required|numeric',
+            'price' => 'required|numeric',
             'transaction_date' => 'required|date'
         ]));
         return redirect('/outgoing')->with('msg', 'Stock out updated!');
