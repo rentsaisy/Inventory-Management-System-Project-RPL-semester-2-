@@ -28,8 +28,8 @@
                         <td>{{ $tx->product->name ?? 'N/A' }}</td>
                         <td>{{ $tx->customer->name ?? 'N/A' }}</td>
                         <td>{{ $tx->quantity }}</td>
-                        <td>Rp {{ number_format($tx->price, 2, ',', '.') }}</td>
-                        <td><strong>Rp {{ number_format($tx->quantity * $tx->price, 2, ',', '.') }}</strong></td>
+                        <td>${{ number_format($tx->price, 2) }}</td>
+                        <td><strong>${{ number_format($tx->quantity * $tx->price, 2) }}</strong></td>
                         <td>{{ \Carbon\Carbon::parse($tx->transaction_date)->format('M d, Y') }}</td>
                         <td>
                             <div style="display: flex; gap: 8px;">
