@@ -12,14 +12,14 @@
             <div class="card-body">
                 <h5 class="card-title">Incoming Goods</h5>
                 <p class="card-stat">{{ $incomingCount }}</p>
-                <p class="card-value">Rp {{ number_format($incomingTotal, 0, ',', '.') }}</p>
+                <p class="card-value">${{ number_format($incomingTotal, 2) }}</p>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Outgoing Goods</h5>
                 <p class="card-stat">{{ $outgoingCount }}</p>
-                <p class="card-value">Rp {{ number_format($outgoingTotal, 0, ',', '.') }}</p>
+                <p class="card-value">${{ number_format($outgoingTotal, 2) }}</p>
             </div>
         </div>
         <div class="card">
@@ -28,11 +28,11 @@
                 <p class="card-stat">{{ $incomingCount - $outgoingCount }}</p>
                 @if(($incomingTotal - $outgoingTotal) > 0)
                     <p class="card-value" style="color: #10b981;">
-                        Rp {{ number_format($incomingTotal - $outgoingTotal, 0, ',', '.') }}
+                        ${{ number_format($incomingTotal - $outgoingTotal, 2) }}
                     </p>
                 @else
                     <p class="card-value" style="color: #ef4444;">
-                        Rp {{ number_format($incomingTotal - $outgoingTotal, 0, ',', '.') }}
+                        ${{ number_format($incomingTotal - $outgoingTotal, 2) }}
                     </p>
                 @endif
             </div>
@@ -61,9 +61,9 @@
                                 <td>{{ $transaction->supplier->name ?? 'N/A' }}</td>
                                 <td>{{ $transaction->product->name ?? 'N/A' }}</td>
                                 <td>{{ $transaction->quantity }}</td>
-                                <td>Rp {{ number_format($transaction->unit_price, 0, ',', '.') }}</td>
-                                <td><strong>Rp {{ number_format($transaction->total_amount, 0, ',', '.') }}</strong></td>
-                                <td>{{ $transaction->created_at->format('d-m-Y') }}</td>
+                                <td>${{ number_format($transaction->price, 2) }}</td>
+                                <td><strong>${{ number_format($transaction->quantity * $transaction->price, 2) }}</strong></td>
+                                <td>{{ \Carbon\Carbon::parse($transaction->transaction_date)->format('M d, Y') }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -96,9 +96,9 @@
                                 <td>{{ $transaction->customer->name ?? 'N/A' }}</td>
                                 <td>{{ $transaction->product->name ?? 'N/A' }}</td>
                                 <td>{{ $transaction->quantity }}</td>
-                                <td>Rp {{ number_format($transaction->unit_price, 0, ',', '.') }}</td>
-                                <td><strong>Rp {{ number_format($transaction->total_amount, 0, ',', '.') }}</strong></td>
-                                <td>{{ $transaction->created_at->format('d-m-Y') }}</td>
+                                <td>${{ number_format($transaction->price, 2) }}</td>
+                                <td><strong>${{ number_format($transaction->quantity * $transaction->price, 2) }}</strong></td>
+                                <td>{{ \Carbon\Carbon::parse($transaction->transaction_date)->format('M d, Y') }}</td>
                             </tr>
                         @endforeach
                     </tbody>

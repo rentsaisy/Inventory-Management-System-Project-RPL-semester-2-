@@ -15,16 +15,18 @@ class ReportController extends Controller
         // Get incoming transactions for current month
         $incomingTransactions = IncomingTransaction::whereMonth('transaction_date', $currentMonth->month)
             ->whereYear('transaction_date', $currentMonth->year)
+            ->with(['product', 'supplier'])
             ->get();
         
         // Get outgoing transactions for current month
         $outgoingTransactions = OutgoingTransaction::whereMonth('transaction_date', $currentMonth->month)
             ->whereYear('transaction_date', $currentMonth->year)
+            ->with(['product', 'customer'])
             ->get();
         
-        // Calculate totals
-        $incomingTotal = $incomingTransactions->sum('total_amount');
-        $outgoingTotal = $outgoingTransactions->sum('total_amount');
+        // Calculate totals (price * quantity)
+        $incomingTotal = $incomingTransactions->sum(fn($tx) => $tx->price * $tx->quantity);
+        $outgoingTotal = $outgoingTransactions->sum(fn($tx) => $tx->price * $tx->quantity);
         
         // Count by type
         $incomingCount = $incomingTransactions->count();
