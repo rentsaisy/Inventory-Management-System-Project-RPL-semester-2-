@@ -64,20 +64,28 @@
                 <th>Type</th>
                 <th>Product</th>
                 <th>Quantity</th>
+                <th>Price</th>
                 <th>Date</th>
             </tr>
         </thead>
         <tbody>
             @forelse($recentTransactions as $tx)
                 <tr>
-                    <td><strong>{{ $tx->type ?? 'Unknown' }}</strong></td>
+                    <td>
+                        @if($tx->type === 'Incoming')
+                            <strong style="padding: 4px 8px; border-radius: 4px; background-color: rgba(180, 231, 255, 0.3); color: #0369a1;">{{ $tx->type }}</strong>
+                        @else
+                            <strong style="padding: 4px 8px; border-radius: 4px; background-color: rgba(212, 186, 255, 0.3); color: #6d28d9;">{{ $tx->type }}</strong>
+                        @endif
+                    </td>
                     <td>{{ $tx->product_name ?? 'N/A' }}</td>
-                    <td>{{ $tx->quantity ?? 0 }}</td>
-                    <td>{{ $tx->transaction_date ?? now()->format('M d, Y') }}</td>
+                    <td>{{ $tx->quantity ?? 0 }} units</td>
+                    <td>${{ number_format($tx->price ?? 0, 2) }}</td>
+                    <td>{{ \Carbon\Carbon::parse($tx->transaction_date)->format('M d, Y') }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4" style="text-align: center; padding: 40px; color: #64748b;">
+                    <td colspan="5" style="text-align: center; padding: 40px; color: #64748b;">
                         No transactions yet. Start by creating a transaction!
                     </td>
                 </tr>
@@ -86,7 +94,19 @@
     </table>
 </div>
 
+@php
+    $incomingDataArray = [];
+    $outgoingDataArray = [];
+    for ($i = 1; $i <= 12; $i++) {
+        $incomingDataArray[] = $monthlyData[$i]['incoming'] ?? 0;
+        $outgoingDataArray[] = $monthlyData[$i]['outgoing'] ?? 0;
+    }
+@endphp
+
 <script>
+    const incomingData = {{ json_encode($incomingDataArray) }};
+    const outgoingData = {{ json_encode($outgoingDataArray) }};
+    
     const ctx = document.getElementById('transactionChart');
     if (ctx) {
         new Chart(ctx, {
@@ -96,7 +116,7 @@
                 datasets: [
                     {
                         label: 'Incoming',
-                        data: [12, 19, 3, 5, 2, 3, 7, 4, 6, 5, 8, 9],
+                        data: incomingData,
                         backgroundColor: 'rgba(180, 231, 255, 0.2)',
                         borderColor: 'rgba(180, 231, 255, 1)',
                         borderWidth: 2,
@@ -104,7 +124,7 @@
                     },
                     {
                         label: 'Outgoing',
-                        data: [8, 12, 5, 9, 7, 11, 4, 8, 5, 7, 6, 10],
+                        data: outgoingData,
                         backgroundColor: 'rgba(212, 186, 255, 0.2)',
                         borderColor: 'rgba(212, 186, 255, 1)',
                         borderWidth: 2,

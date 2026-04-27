@@ -30,13 +30,63 @@ class DashboardController extends Controller
                 ->join('m_products', 't_outgoing_transactions.product_id', '=', 'm_products.id')
                 ->sum(DB::raw('t_outgoing_transactions.quantity * m_products.price')) ?? 0;
             
-            // Get recent transactions
-            $recentTransactions = collect();
+            // Get monthly transaction data for the chart (current year)
+            $monthlyData = [];
+            for ($month = 1; $month <= 12; $month++) {
+                $incomingCount = IncomingTransaction::whereMonth('transaction_date', $month)
+                    ->whereYear('transaction_date', $currentYear)
+                    ->count();
+                
+                $outgoingCount = OutgoingTransaction::whereMonth('transaction_date', $month)
+                    ->whereYear('transaction_date', $currentYear)
+                    ->count();
+                
+                $monthlyData[$month] = [
+                    'incoming' => $incomingCount,
+                    'outgoing' => $outgoingCount
+                ];
+            }
+            
+            // Get recent transactions (last 10, combined and sorted by date)
+            $incomingTransactions = IncomingTransaction::with('product')
+                ->orderBy('transaction_date', 'desc')
+                ->limit(10)
+                ->get()
+                ->map(function ($tx) {
+                    return (object) [
+                        'type' => 'Incoming',
+                        'product_name' => $tx->product->name ?? 'Unknown Product',
+                        'quantity' => $tx->quantity,
+                        'transaction_date' => $tx->transaction_date,
+                        'price' => $tx->price
+                    ];
+                });
+            
+            $outgoingTransactions = OutgoingTransaction::with('product')
+                ->orderBy('transaction_date', 'desc')
+                ->limit(10)
+                ->get()
+                ->map(function ($tx) {
+                    return (object) [
+                        'type' => 'Outgoing',
+                        'product_name' => $tx->product->name ?? 'Unknown Product',
+                        'quantity' => $tx->quantity,
+                        'transaction_date' => $tx->transaction_date,
+                        'price' => $tx->price
+                    ];
+                });
+            
+            // Merge and sort by transaction date (most recent first)
+            $recentTransactions = $incomingTransactions->concat($outgoingTransactions)
+                ->sortByDesc('transaction_date')
+                ->take(10);
+                
         } catch (\Exception $e) {
             $totalProducts = 0;
             $totalStock = 0;
             $totalTransactions = 0;
             $monthlyRevenue = 0;
+            $monthlyData = array_fill(1, 12, ['incoming' => 0, 'outgoing' => 0]);
             $recentTransactions = collect();
         }
         
@@ -46,6 +96,7 @@ class DashboardController extends Controller
             'totalTransactions' => $totalTransactions,
             'monthlyRevenue' => $monthlyRevenue,
             'recentTransactions' => $recentTransactions,
+            'monthlyData' => $monthlyData ?? array_fill(1, 12, ['incoming' => 0, 'outgoing' => 0]),
         ]);
     }
 }
