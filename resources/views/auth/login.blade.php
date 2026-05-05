@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -16,14 +17,15 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #F5E6FF 0%, #E8D7FF 20%, #D5E8FF 40%, #C8E5FF 60%, #FFD9E8 80%, #FFE4F0 100%);
+            background: linear-gradient(135deg, #B4D7FF 0%, #D4C5FF 25%, #FFD4E8 50%, #C5E8FF 75%, #FFE0F0 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
+            overflow: hidden;
         }
 
         @keyframes gradientShift {
@@ -32,108 +34,190 @@
             100% { background-position: 0% 50%; }
         }
 
-        .login-container {
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(197, 179, 224, 0.25), 0 0 40px rgba(196, 181, 253, 0.15);
-            padding: 50px;
+        .login-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             width: 100%;
-            max-width: 420px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(245, 230, 255, 0.8);
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(180, 120, 220, 0.2), 0 10px 40px rgba(200, 150, 250, 0.15);
+            padding: 40px 35px;
+            width: 100%;
+            max-width: 380px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
         .login-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .logo {
-            width: 160px;
-            height: 160px;
+            width: 100px;
+            height: 70px;
             margin: 0 auto 20px;
-            border-radius: 0;
             display: block;
-            box-shadow: none;
-            position: relative;
             object-fit: contain;
         }
 
-        .logo::before {
+        .logo-text {
             display: none;
         }
 
         .login-header h1 {
-            font-size: 28px;
-            color: #7C6BA8;
-            margin-bottom: 10px;
+            font-size: 16px;
+            color: #5A4A7A;
             font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
         }
 
         .login-header p {
-            color: #B8A8D8;
-            font-size: 14px;
+            color: #9B8BAC;
+            font-size: 12px;
+            font-weight: 400;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #7C6BA8;
+            color: #5A4A7A;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="text"] {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #E8D7FF;
+            border: 1.5px solid #E8D7FF;
             border-radius: 10px;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s ease;
-            background: #F8F3FF;
-            color: #7C6BA8;
+            background: #FAFBFF;
+            color: #5A4A7A;
+            font-family: 'Inter', sans-serif;
         }
 
         input[type="email"]:focus,
-        input[type="password"]:focus {
+        input[type="password"]:focus,
+        input[type="text"]:focus {
             outline: none;
-            border-color: #C5B3E0;
+            border-color: #A78BCC;
             background: #FFFFFF;
-            box-shadow: 0 0 0 3px rgba(197, 179, 224, 0.15);
+            box-shadow: 0 0 0 4px rgba(167, 139, 204, 0.1);
         }
 
         input[type="email"]::placeholder,
-        input[type="password"]::placeholder {
+        input[type="password"]::placeholder,
+        input[type="text"]::placeholder {
             color: #D4BAFF;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #A78BCC;
+            font-size: 16px;
+            border: none;
+            background: none;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .toggle-password:hover {
+            color: #7C6BA8;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            font-size: 13px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #A78BCC;
+        }
+
+        .checkbox-label {
+            color: #5A4A7A;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .forgot-link {
+            color: #A78BCC;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            color: #7C6BA8;
+            text-decoration: underline;
         }
 
         .login-btn {
             width: 100%;
-            padding: 12px;
-            background: #D4BAFF;
+            padding: 13px;
+            background: linear-gradient(135deg, #9BBFFF 0%, #B8A8FF 50%, #D9BAFF 100%);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(197, 179, 224, 0.3);
-            margin-top: 20px;
+            box-shadow: 0 8px 30px rgba(167, 139, 204, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .login-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(197, 179, 224, 0.4);
+            box-shadow: 0 12px 40px rgba(167, 139, 204, 0.45);
         }
 
         .login-btn:active {
             transform: translateY(0);
+        }
+
+        .login-btn i {
+            font-size: 16px;
         }
 
         .error-message {
@@ -152,95 +236,129 @@
             padding: 12px 15px;
             border-radius: 8px;
             margin-bottom: 20px;
-            border-left: 4px solid #D4BAFF;
+            border-left: 4px solid #A78BCC;
             font-size: 13px;
         }
 
-        .footer-text {
+        .auth-footer {
             text-align: center;
-            color: #64748b;
-            font-size: 13px;
+            color: #9B8BAC;
+            font-size: 12px;
             margin-top: 20px;
+            font-weight: 500;
         }
 
-        .footer-text a {
-            color: #D4BAFF;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
+        .bottom-nav {
+            display: none;
         }
 
-        .footer-text a:hover {
-            color: #0ea5e9;
+        .copyright {
+            display: none;
         }
 
         @media (max-width: 480px) {
             .login-container {
-                padding: 30px 20px;
+                padding: 40px 25px;
                 margin: 20px;
             }
 
             .login-header h1 {
-                font-size: 24px;
+                font-size: 14px;
             }
 
             .logo {
-                width: 60px;
-                height: 60px;
-                font-size: 30px;
+                width: 100px;
+                height: 65px;
+            }
+
+            .logo-text {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <img src="{{ asset('iconDainty.png') }}" alt="Dainty Dream" class="logo">
-            <p>Clothes Shop Inventory System</p>
-        </div>
-
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="error-message">{{ $error }}</div>
-            @endforeach
-        @endif
-
-        @if (session('msg'))
-            <div class="success-message">{{ session('msg') }}</div>
-        @endif
-
-        <form method="POST" action="{{ url('/login') }}">
-            @csrf
-            
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    placeholder="admin@dainty.com"
-                    value="{{ old('email') }}"
-                    required
-                >
+    <div class="login-wrapper">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="{{ asset('iconDainty.png') }}" alt="Dainty Dream" class="logo">
+                <h1>INVENTORY MANAGEMENT</h1>
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    placeholder="Enter your password"
-                    required
-                >
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="error-message">{{ $error }}</div>
+                @endforeach
+            @endif
+
+            @if (session('msg'))
+                <div class="success-message">{{ session('msg') }}</div>
+            @endif
+
+            <form method="POST" action="{{ url('/login') }}">
+                @csrf
+                
+                <div class="form-group">
+                    <label for="email">Business Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="owner@daintydream.com"
+                        value="{{ old('email') }}"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Access Key</label>
+                    <div class="password-input-wrapper">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="••••••••"
+                            required
+                        >
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="checkbox-wrapper">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="stay-cloud" name="stay_cloud">
+                        <label for="stay-cloud" class="checkbox-label">Stay in the cloud</label>
+                    </div>
+                    <a href="#" class="forgot-link">Forgot key?</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span>Open Boutique</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Authorized Access Only. Request Access
             </div>
-
-            <button type="submit" class="login-btn">Sign In</button>
-        </form>
-
-        <div class="footer-text">
-            Default credentials: admin@dainty.com / 123
         </div>
     </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.querySelector('.toggle-password');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
+            }
+        }
+    </script>
 </body>
 </html>
