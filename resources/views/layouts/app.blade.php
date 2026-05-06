@@ -68,10 +68,10 @@
         /* SIDEBAR */
         .sidebar {
             width: 260px;
-            background: var(--bg-white);
-            border-right: 1px solid var(--border-light);
-            padding: 0px 0;
-            box-shadow: 2px 0 15px rgba(197, 179, 224, 0.12);
+            background: #FFFFFF;
+            border-right: 1px solid #E8D7FF;
+            padding: 20px 0;
+            box-shadow: 2px 0 15px rgba(197, 179, 224, 0.08);
             display: flex;
             flex-direction: column;
             height: 100vh;
@@ -80,23 +80,27 @@
 
         .sidebar-logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 0px 15px 10px;
-            border-bottom: 1px solid var(--border-light);
+            padding: 0px 15px 30px;
+            border-bottom: none;
             margin: 0;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-dark);
+            font-size: 12px;
+            font-weight: 500;
+            color: #44474E;
             flex-shrink: 0;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .sidebar-logo-icon {
             width: 100%;
             height: auto;
-            max-width: 120px;
-            max-height: 120px;
+            max-width: 100px;
+            max-height: 100px;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -105,44 +109,42 @@
         }
 
         .sidebar-section {
-            padding: 0 12px;
-            margin-bottom: 12px;
+            padding: 0 0;
+            margin-bottom: 0;
             flex-shrink: 0;
         }
 
         .sidebar-section-title {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-gray);
-            padding: 0 12px 8px;
-            letter-spacing: 0.5px;
+            display: none;
         }
 
         .sidebar-link {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            margin: 2px 0;
-            border-radius: 6px;
+            gap: 12px;
+            padding: 12px 20px;
+            margin: 4px 12px;
+            border-left: none;
+            border-radius: 10px;
             text-decoration: none;
-            color: var(--text-gray);
+            color: #A9AAB2;
             transition: all 0.3s ease;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             cursor: pointer;
         }
 
         .sidebar-link:hover {
-            background: #D4BAFF;
-            color: white;
-            transform: translateX(5px);
+            background: #F0F0F5;
+            color: #4A90E2;
+            transform: none;
         }
 
         .sidebar-link.active {
-            background: #D4BAFF;
-            color: white;
+            background: #E8F1FF;
+            color: #4A90E2;
+            border-left: none;
+            border-right: 4px solid #4A90E2;
         }
 
         .sidebar-link svg {
@@ -153,8 +155,11 @@
 
         .sidebar-logout {
             margin-top: auto;
-            padding: 0 12px 5px;
+            padding: 30px 12px 0;
             flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .logout-btn {
@@ -163,19 +168,38 @@
             justify-content: center;
             gap: 6px;
             width: 100%;
-            padding: 9px 12px;
-            background: #FFE8E8;
-            color: #C45555;
+            padding: 10px 12px;
+            background: #E8C1D1;
+            color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         .logout-btn:hover {
-            background: #FFD4D4;
+            background: #D4A8BE;
+        }
+
+        .sidebar-footer-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            margin: 4px 12px;
+            text-decoration: none;
+            color: #A9AAB2;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 10px;
+        }
+
+        .sidebar-footer-link:hover {
+            background: #F0F0F5;
+            color: #4A90E2;
         }
 
         /* MAIN CONTENT */
@@ -806,6 +830,7 @@
         <div class="sidebar">
             <div class="sidebar-logo">
                 <img src="{{ asset('iconDainty.png') }}" alt="Dainty Dream" class="sidebar-logo-icon">
+                <span>Inventory Management</span>
             </div>
 
             <!-- Dashboard -->
@@ -826,7 +851,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M16 2H8c-1.1 0-2 .9-2 2v4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2h-2V4c0-1.1-.9-2-2-2zm-2 2v4H10V4h4zm6 14H4V10h16v10z"/>
                     </svg>
-                    Products
+                    Clothing Items
                 </a>
                 <a href="{{ url('/categories') }}" class="sidebar-link {{ request()->is('categories*') ? 'active' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -855,13 +880,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
                     </svg>
-                    Incoming Clothes
+                    Stock In
                 </a>
                 <a href="{{ url('/outgoing') }}" class="sidebar-link {{ request()->is('outgoing*') ? 'active' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 13H5v-2h14v2z"/>
                     </svg>
-                    Outgoing Clothes
+                    Stock Out
                 </a>
             </div>
 
@@ -881,12 +906,23 @@
                 <form method="POST" action="{{ url('/logout') }}" style="display: contents;">
                     @csrf
                     <button type="submit" class="logout-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
-                            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
-                        </svg>
-                        Logout
+                        <span>Log Out</span>
                     </button>
                 </form>
+                
+                <a href="#" class="sidebar-footer-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                        <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.64l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.09-.47 0-.59.22L2.74 8.87c-.12.22-.07.49.12.64l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.64l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.09.47 0 .59-.22l1.92-3.32c.12-.22.07-.49-.12-.64l-2.03-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                    </svg>
+                    Settings
+                </a>
+                
+                <a href="#" class="sidebar-footer-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                    Support
+                </a>
             </div>
         </div>
 
